@@ -13,6 +13,7 @@ import Colors from '../constants/Colors';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import FiltersScreen from '../screens/FiltersScreen';
+import { Text } from 'react-native';
 
 
 
@@ -20,6 +21,12 @@ const defaultStackNavOptions = {
     defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: Colors.primaryColor
+        },
+        headerTitleStyle: {
+            fontFamily: 'open-sans-bold'
+        },
+        headerBackTitleStyle: {
+            fontFamily: 'open-sans'
         },
         headerTintColor: 'white'
     }
@@ -43,14 +50,16 @@ const tabScreenConfig = {
         screen: MealsNavigator, navigationOptions: {
             tabBarIcon: (tabInfo) => {
                 return <Ionicons name='ios-restaurant' size={25} color={tabInfo.tintColor} />;
-            }
+            },
+            tabBarLabel: <Text style={{ fontFamily: 'open-sans' }}>Meals</Text>
         }
     },
     Favorites: {
         screen: FavNavigator, navigationOptions: {
             tabBarIcon: (tabInfo) => {
                 return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor} />;
-            }
+            },
+            tabBarLabel: <Text style={{ fontFamily: 'open-sans' }}>Favourites</Text>
         }
     }
 };
@@ -65,6 +74,9 @@ const MealFavTabNavigator = Platform.OS == 'android'
     })
     : createBottomTabNavigator(tabScreenConfig, {
         tabBarOptions: {
+            labelStyle: {
+                fontFamily: 'open-sans'
+            },
             activeTintColor: Colors.accentColor
         }
     });
