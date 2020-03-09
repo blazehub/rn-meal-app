@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
         margin: 15,
         height: 150,
         borderRadius: 10,
-        overflow: 'hidden'
+        elevation: 5,
+        overflow: Platform.OS === 'andriod' && Platform.Version >= 21 ? 'hidden' : 'visible'
     },
     container: {
         flex: 1,
